@@ -1,8 +1,8 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:chat_app/features/signInScreen/presentation/controller/signIn_States.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/components/custom_dialog.dart';
 
 class SignInScreenCubit extends Cubit<SignInStates> {
@@ -19,7 +19,17 @@ class SignInScreenCubit extends Cubit<SignInStates> {
         email: emailController.text,
         password: passwordController.text,
       );
-      Navigator.pushReplacementNamed(context, 'home');
+      if (credential.user!.emailVerified) {
+        Navigator.pushReplacementNamed(context, 'home');
+      } else {
+        customDialog(
+          context,
+          errorMessage: "Please go to your mail to activate the account",
+          title: "Warning",
+          dialogType: DialogType.warning,
+        );
+      }
+
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
       String errorMessage = 'An error occurred';
@@ -34,14 +44,8 @@ class SignInScreenCubit extends Cubit<SignInStates> {
           errorMessage = ' ${e.message}';
           break;
       }
-      emit(SignInErrorState(errorMessage));
       print(errorMessage);
-
-      customDialog(
-        context,
-        errorMessage: errorMessage,
-        isError: true,
-      );
+      emit(SignInErrorState(errorMessage));
     }
   }
 }

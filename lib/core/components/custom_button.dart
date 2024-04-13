@@ -1,6 +1,7 @@
 import 'package:chat_app/core/styles/color_manager.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
   final String name;
   final void Function()? onPressed;

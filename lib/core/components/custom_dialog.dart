@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 void customDialog(
   BuildContext context, {
   required String errorMessage,
-  required bool isError,
+  required DialogType dialogType,
+  required String title,
 }) {
   AwesomeDialog(
     context: context,
-    dialogType: isError ? DialogType.error : DialogType.success,
+    dialogType: dialogType,
     animType: AnimType.bottomSlide,
-    title: isError ? 'Error' : 'Success',
+    title: title,
     desc: errorMessage,
   ).show();
 }

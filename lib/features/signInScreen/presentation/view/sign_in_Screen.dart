@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:chat_app/core/components/custom_button.dart';
 import 'package:chat_app/core/components/custom_dialog.dart';
 import 'package:chat_app/core/components/custome_text_form.dart';
@@ -6,10 +7,10 @@ import 'package:chat_app/core/styles/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../controller/signIn_States.dart';
 import '../controller/signIn_cubit.dart';
 
+// ignore: must_be_immutable
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
@@ -30,7 +31,8 @@ class SignInScreen extends StatelessWidget {
                   customDialog(
                     context,
                     errorMessage: state.msg,
-                    isError: true,
+                    title: "Error",
+                    dialogType: DialogType.error,
                   );
                 }
               },

@@ -1,9 +1,9 @@
-abstract class SignUpScreenStates {}
+abstract class SignUpStates {}
 
-class SignUpScreenInitState extends SignUpScreenStates {}
+class SignUpInitState extends SignUpStates {}
 
-class SignUpScreenLoadingState extends SignUpScreenStates {}
+class SignUpLoadingState extends SignUpStates {}
 
-class SignUpScreenSuccessState extends SignUpScreenStates {}
+class SignUpSuccessState extends SignUpStates {}
 
-class SignUpScreenErrorState extends SignUpScreenStates {}
+class SignUpErrorState extends SignUpStates {}
