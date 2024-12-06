@@ -1,3 +1,5 @@
+import 'package:chat_app/core/resources/fcm_service.dart';
+import 'package:chat_app/core/styles/color_manager.dart';
 import 'package:chat_app/core/utils/bloc_observer.dart';
 import 'package:chat_app/features/homeScreen/presentation/view/home_screen.dart';
 import 'package:chat_app/features/introScreen/presentation/view/intro_screen.dart';
@@ -15,7 +17,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  );
+  ).then((e) async {
+    // NotificationService notificationService = NotificationService();
+    // await notificationService.registerNotification();
+    // notificationService.configureLocalNotification();
+
+    // FirebaseMessaging.onBackgroundMessage(firebaseMessegingBackgroundHandler);
+  });
+
   Bloc.observer = MyBlocObserver();
   runApp(const MyApp());
 }
@@ -51,7 +60,7 @@ class _MyAppState extends State<MyApp> {
       },
       title: 'Chat App Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: ColorManager.secondary),
         useMaterial3: true,
       ),
       initialRoute: "intro",

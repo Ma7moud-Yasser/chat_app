@@ -41,11 +41,39 @@ class SignInScreenCubit extends Cubit<SignInStates> {
           errorMessage = 'Wrong password provided for that user.';
           break;
         default:
-          errorMessage = ' ${e.message}';
+          errorMessage = 'Email or password is incorrect !';
           break;
       }
       print(errorMessage);
       emit(SignInErrorState(errorMessage));
+    }
+  }
+
+  forgetPassword(BuildContext context) async {
+    if (emailController.text == "") {
+      customDialog(context,
+          errorMessage: 'Please Enter Your Email',
+          dialogType: DialogType.error,
+          title: "Error");
+      return;
+    }
+
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text);
+      customDialog(
+        context,
+        errorMessage: "Please go to your mail to Reset the Password",
+        dialogType: DialogType.success,
+        title: "Reset Password",
+      );
+    } catch (e) {
+      customDialog(
+        context,
+        errorMessage: "Please make sure you enter the correct email ",
+        dialogType: DialogType.error,
+        title: "Error",
+      );
     }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:chat_app/core/components/custom_button.dart';
-import 'package:chat_app/core/components/custome_text_form.dart';
+import 'package:chat_app/core/components/custom_text_form.dart';
 import 'package:chat_app/core/styles/assets_manager.dart';
 import 'package:chat_app/core/styles/color_manager.dart';
 import 'package:chat_app/features/signUpScreen/presentation/controller/sginUp_states.dart';

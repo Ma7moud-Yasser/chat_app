@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:chat_app/core/components/custom_button.dart';
 import 'package:chat_app/core/components/custom_dialog.dart';
-import 'package:chat_app/core/components/custome_text_form.dart';
+import 'package:chat_app/core/components/custom_text_form.dart';
 import 'package:chat_app/core/styles/assets_manager.dart';
 import 'package:chat_app/core/styles/color_manager.dart';
 import 'package:flutter/material.dart';
@@ -77,6 +77,21 @@ class SignInScreen extends StatelessWidget {
                           }
                         },
                         title: "Password",
+                      ),
+                      Align(
+                        alignment: const Alignment(1, 0),
+                        child: TextButton(
+                            onPressed: () {
+                              cubit.forgetPassword(context);
+                            },
+                            child: const Text(
+                              "Forget password ?",
+                              style: TextStyle(
+                                color: ColorManager.primary,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            )),
                       ),
                       const SizedBox(
                         height: 30,
